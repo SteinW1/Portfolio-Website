@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    padding-top: 60px;
 }
 
 .navigation-bar {
@@ -9,6 +10,9 @@ body {
     padding: 0;
     overflow: hidden;
     background-color: #87CEEB;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .nav-item {
@@ -25,4 +29,8 @@ body {
     background-color: #ffffff;
     color: #87CEEB;
     text-decoration: none;
+}
+
+.active-nav-item {
+
 }
