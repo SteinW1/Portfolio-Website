@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #87CEEB;
+    background-color: #007399;
     position: fixed;
     top: 0;
     width: 100%;
@@ -27,10 +27,11 @@ body {
 
 .nav-item:hover {
     background-color: #ffffff;
-    color: #87CEEB;
+    color: #007399;
     text-decoration: none;
 }
 
 .active-nav-item {
-
+    background-color: #ffffff;
+    color: #007399;
 }
