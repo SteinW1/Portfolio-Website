@@ -1,6 +1,6 @@
 <ul class="navigation-bar">
-    <a class="nav-item {% if view_name == 'home' %}active-nav-item{% endif %}" href="{% url 'portfolio-home' %}">Home</a>
-    <a class="nav-item {% if view_name == 'projects' %}active-nav-item{% endif %}" href="{% url 'portfolio-projects' %}">Projects</a>
-    <a class="nav-item {% if view_name == 'resume' %}active-nav-item{% endif %}" href="{% url 'portfolio-resume' %}">Resume</a>
     <a class="nav-item {% if view_name == 'contact' %}active-nav-item{% endif %}" href="{% url 'portfolio-contact' %}">Contact</a>
+    <a class="nav-item {% if view_name == 'resume' %}active-nav-item{% endif %}" href="{% url 'portfolio-resume' %}">Resume</a>
+    <a class="nav-item {% if view_name == 'projects' %}active-nav-item{% endif %}" href="{% url 'portfolio-projects' %}">Projects</a>
+    <a class="nav-item {% if view_name == 'home' %}active-nav-item{% endif %}" href="{% url 'portfolio-home' %}">Home</a>
 </ul>

@@ -21,7 +21,7 @@ body {
     color: white;
     text-align: center;
     padding: 14px 16px;
-    float: left;
+    float: right;
     text-decoration: none;
 }
 
@@ -34,4 +34,20 @@ body {
 .active-nav-item {
     background-color: #ffffff;
     color: #007399;
+}
+
+.projects-grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 20px;
+    background-color: #007399;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.projects-grid-item {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 40px;
 }

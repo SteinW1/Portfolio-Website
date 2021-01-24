@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Project
 
 def home(request):
     context = {
@@ -9,6 +10,7 @@ def home(request):
 def projects(request):
     context = {
         'view_name': "projects",
+        'project': Project.objects.all(),
     }
     return render(request, 'portfolio/projects.html', context)
 
