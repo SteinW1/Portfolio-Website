@@ -4,6 +4,11 @@ body {
     padding-top: 60px;
 }
 
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .navigation-bar {
     list-style-type: none;
     margin: 0;
@@ -16,13 +21,11 @@ body {
 }
 
 .nav-item {
-    font-weight: bold;
     display: block;
-    color: white;
+    color: #ffffff;
     text-align: center;
     padding: 14px 16px;
     float: right;
-    text-decoration: none;
 }
 
 .nav-item:hover {
@@ -37,17 +40,33 @@ body {
 }
 
 .projects-grid-container {
-    display: inline-grid;
-    grid-template-columns: auto auto auto;
-    grid-column-gap: 20px;
-    background-color: #007399;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    border:1px solid #ffffff;
     border-radius: 5px;
+    margin: 0px 50px;
     padding: 10px;
 }
 
 .projects-grid-item {
     background-color: #ffffff;
-    border: 1px solid #000000;
-    border-radius: 5px;
+    border: 3px solid #D0D0D0;
+    border-radius: 10px;
     padding: 40px;
+}
+
+.projects-grid-item:hover {
+    border: 3px solid #007399;
+}
+
+.project-grid-item-title {
+    color: #000000;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #D0D0D0;
+}
+
+.project-grid-item-description {
+    color: #000000;
 }
