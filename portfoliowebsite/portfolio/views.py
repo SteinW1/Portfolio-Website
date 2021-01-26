@@ -7,10 +7,16 @@ def home(request):
     }
     return render(request, 'portfolio/home.html', context)
 
-def projects(request):
+def projects_list(request):
     context = {
         'view_name': "projects",
         'project': Project.objects.all(),
+    }
+    return render(request, 'portfolio/projects_list.html', context)
+
+def projects(request, project_name):
+    context = {
+        'view_name': "projects"
     }
     return render(request, 'portfolio/projects.html', context)
 

@@ -1,13 +1,4 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
-    <div class="projects-grid-container">
-        {% for project in project %}
-            <a class="projects-grid-item" href="#">
-                    <div class="project-grid-item-title">{{ project.title }}</div>
-                    <div class="project-grid-item-description">
-                        <p>{{ project.description }}</p>
-                    </div>
-            </a>
-        {% endfor %}
-    </div>
+    <h1>Project Page</h1>
 {% endblock content %}
