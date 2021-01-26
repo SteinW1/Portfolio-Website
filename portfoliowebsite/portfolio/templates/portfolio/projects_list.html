@@ -2,8 +2,8 @@
 {% block content %}
     <div class="projects-grid-container">
         {% for project in project %}
-            <a class="projects-grid-item" href="{% url 'projects' project.project_name %}">
-                    <div class="project-grid-item-title">{{ project.project_name }}</div>
+            <a class="projects-grid-item" href="{% url 'project-detail' project.id %}">
+                    <div class="project-grid-item-title">{{ project.project_name }} | {{ project.status }}</div>
                     <div class="project-grid-item-description">
                         <p>{{ project.description }}</p>
                     </div>
