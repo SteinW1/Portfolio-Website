@@ -27,5 +27,5 @@ def contact(request):
     }
     return render(request, 'portfolio/contact.html', context)
 
-    class ProjectDetailView(DetailView):
+class ProjectDetailView(DetailView):
     model = Project

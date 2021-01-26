@@ -1,6 +1,11 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
-    <div class="project-container">
-        {{ project.project_name }}
+    <div class="content project-container">
+        <h1>{{ project.project_name }}</h1>
+        <p>{% if project.long_description %}
+                {{ project.long_description }}
+            {% else %}
+                {{ project.short_description }}
+            {% endif %}
     </div>
 {% endblock content %}

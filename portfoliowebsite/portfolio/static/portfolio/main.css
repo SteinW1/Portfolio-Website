@@ -46,25 +46,25 @@ a {
     color: var(--primaryColor);
 }
 
+.content {
+    margin: 20px 200px;
+}
+
 .projects-grid-container {
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 20px;
+    grid-gap: 25px;
     border:1px solid var(--white);
-    border-radius: 5px;
-    margin: 0px 50px;
-    padding: 10px;
 }
 
 .projects-grid-item {
     background-color: var(--white);
-    border: 3px solid var(--secondaryColor);
-    border-radius: 10px;
-    padding: 40px;
+    border: 1px solid var(--secondaryColor);
+    padding: 20px;
 }
 
 .projects-grid-item:hover {
-    border: 3px solid var(--primaryColor);
+    border: 1px solid var(--primaryColor);
 }
 
 .project-grid-item-title {
@@ -79,7 +79,7 @@ a {
 }
 
 .project-container {
-    border: 1px solid (-var(--primaryColor));
+    border: 1px solid var(--secondaryColor);
     padding: 0px 50px;
-    margin: 10px;
+    margin: 20px 200px;
 }
