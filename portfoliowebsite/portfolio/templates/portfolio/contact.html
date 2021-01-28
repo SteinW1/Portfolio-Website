@@ -1,6 +1,33 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
     <div class="content">
-        <h1>Contact Form</h1>
+        <h1>Contact Me</h1>
+        <p>You can send a message to my email by filling out the form below.</p>
+        <div class='form-container'>
+            <form method="post">
+                {% csrf_token %}
+                <div class='form-input-container'>
+                    <div class='form-input-group'>   
+                        <p class='form-input-label'>Your Name:</p>
+                        {{ form.from_name }}
+                    </div>
+                    <div class='form-input-group'>   
+                        <p class='form-input-label'>From Email:</p>
+                        {{ form.from_email }}
+                    </div>
+                    <div class='form-input-group'>   
+                        <p class='form-input-label'>Subject:</p>
+                        {{ form.subject }}
+                    </div>
+                    <div class='form-input-group'>   
+                        <p class='form-input-label'>Message:</p>
+                        {{ form.message }}
+                    </div>
+                    <div class="form-action-buttons">
+                        <button type="submit">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock content %}

@@ -16,6 +16,18 @@ a {
     font-weight: bold;
 }
 
+button {
+    color: var(--primaryColor);
+    font-weight: bold;
+    background-color: var(--white);
+    padding: 10px 20px;
+    border: none;
+}
+
+button:hover {
+    background-color: var(--secondaryColor);
+}
+
 .navigation-bar {
     list-style-type: none;
     margin: 0;
@@ -82,4 +94,20 @@ a {
     border: 1px solid var(--secondaryColor);
     padding: 0px 50px;
     margin: 20px 200px;
+}
+
+.form-input-container {
+    padding: 10px;
+    background-color: var(--primaryColor);
+    border-radius: 5px;
+}
+
+.form-textfield {
+    border-radius: 5px;
+}
+
+.form-input-label {
+    color: var(--white);
+    font-weight: bold;
+    margin-bottom: 0;
 }

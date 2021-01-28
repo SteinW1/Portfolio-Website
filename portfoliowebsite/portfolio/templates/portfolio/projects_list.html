@@ -2,7 +2,7 @@
 {% block content %}
     <div class="content">
         <h1>List of projects:</h1>
-        <p>Some of the projects are integrated into this website. Click the links below to get more information about the projects.</p>
+        <p>Some of the projects can be accessed through this website. Click the links below to get more information.</p>
         <div class="projects-grid-container">
             {% for project in project %}
                 <a class="projects-grid-item" href="{% url 'project-detail' project.id %}">
