@@ -3,12 +3,15 @@
     --secondaryColor: #D0D0D0;
     --white: #ffffff;
     --black: #000000;
+    --successBG: #90ee90;
+    --successText: #006400;
+    --errorBG: #ff0000;
+    --errorText: #8b0000;
 }
 
 body {
     margin: 0;
     padding: 0;
-    padding-top: 60px;
 }
 
 a {
@@ -34,7 +37,6 @@ button:hover {
     padding: 0;
     overflow: hidden;
     background-color: var(--primaryColor);
-    position: fixed;
     top: 0;
     width: 100%;
 }
@@ -51,6 +53,7 @@ button:hover {
     background-color: var(--white);
     color: var(--primaryColor);
     text-decoration: none;
+    transition-duration: 0.4s;
 }
 
 .active-nav-item {
@@ -77,6 +80,7 @@ button:hover {
 
 .projects-grid-item:hover {
     border: 1px solid var(--primaryColor);
+    transition-duration: 0.4s;
 }
 
 .project-grid-item-title {
@@ -97,17 +101,47 @@ button:hover {
 }
 
 .form-input-container {
-    padding: 10px;
+    padding: 20px;
     background-color: var(--primaryColor);
     border-radius: 5px;
 }
 
 .form-textfield {
-    border-radius: 5px;
+    padding: 5px;
+    border:2px solid var(--white);
+    outline: none;
+    resize: none;
+}
+
+.form-textfield:focus {
+    border:2px solid var(--secondaryColor);
 }
 
 .form-input-label {
     color: var(--white);
     font-weight: bold;
     margin-bottom: 0;
+}
+
+.alert_message {
+    width: auto;
+    margin: 0;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.success {
+    background-color: var(--successBG);
+    color: var(--successText);
+}
+
+.error {
+    background-color: var(--errorBG);
+    color: var(--errorText);
+}
+
+.closebtn {
+    cursor: pointer;
+    float: right;
+    margin-left: 15px;
 }

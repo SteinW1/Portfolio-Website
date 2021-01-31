@@ -1,5 +1,12 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
+    {% if messages %}
+        <ul class="alert_message {{ message.tags }}">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div class="content">
         <h1>Contact Me</h1>
         <p>You can send a message to my email by filling out the form below.</p>
@@ -7,22 +14,12 @@
             <form method="post">
                 {% csrf_token %}
                 <div class='form-input-container'>
-                    <div class='form-input-group'>   
-                        <p class='form-input-label'>Your Name:</p>
-                        {{ form.from_name }}
-                    </div>
-                    <div class='form-input-group'>   
-                        <p class='form-input-label'>From Email:</p>
-                        {{ form.from_email }}
-                    </div>
-                    <div class='form-input-group'>   
-                        <p class='form-input-label'>Subject:</p>
-                        {{ form.subject }}
-                    </div>
-                    <div class='form-input-group'>   
-                        <p class='form-input-label'>Message:</p>
-                        {{ form.message }}
-                    </div>
+                    {% for i in form %}
+                        <div class='form-input-group'>
+                            <p class='form-input-label'>{{ i.label }}</p>
+                            {{ i }}
+                        </div>
+                    {% endfor %}
                     <div class="form-action-buttons">
                         <button type="submit">Send</button>
                     </div>
