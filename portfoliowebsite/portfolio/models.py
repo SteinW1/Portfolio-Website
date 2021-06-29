@@ -1,7 +1,7 @@
 from django.db import models
 
 class Project(models.Model):
-    project_name = models.CharField(max_length=25, unique=True, null=False)
+    project_name = models.CharField(max_length=25, primary_key=True, null=False)
     short_description = models.CharField(max_length=200, null=False)
     long_description = models.TextField(blank=True)
     github_link = models.URLField(blank=True)
