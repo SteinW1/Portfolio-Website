@@ -28,4 +28,7 @@ def contact(request):
         print(form.errors)
     else:
         form = ContactForm()
-    return render(request, 'contact/contact.html', {'form': form, 'portfolio_view_name': 'contact', 'recaptcha_site_key':settings.RECAPTCHA_SITE_KEY})
+    print(str(settings.RECAPTCHA_SITE_KEY))
+    a ="test"
+    print(type(a))
+    return render(request, 'contact/contact.html', {'form': form, 'portfolio_view_name': 'contact', 'recaptcha_site_key': str(settings.RECAPTCHA_SITE_KEY)})
