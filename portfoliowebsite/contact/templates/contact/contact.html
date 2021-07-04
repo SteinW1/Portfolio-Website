@@ -1,18 +1,33 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
+
+	<!-- Google's reCaptcha API -->
+	<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
+    
     {% if messages %}
         <ul class="alert_message {{ message.tags }}">
             {% for message in messages %}
-            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
             {% endfor %}
         </ul>
     {% endif %}
+    
+	<script>
+		grecaptcha.enterprise.ready(function() {
+			grecaptcha.enterprise.execute({{recaptcha_site_key}}, {action: 'contact-form'}).then(function(token) {
+				document.getElementById('g-recaptcha-response').value = token;
+			});
+		});
+	</script>
+   
     <div class="content">
         <h1>Contact Me</h1>
         <p>You can send a message to my email by filling out the form below.</p>
         <div class='form-container'>
             <form method="post">
                 {% csrf_token %}
+                <!-- reCAPTCHA input -->
+				<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"> 
                 <div class='form-input-container'>
                     {% for i in form %}
                         <div class='form-input-group'>

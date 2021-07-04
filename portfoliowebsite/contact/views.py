@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
 from .forms import ContactForm
+from django.http import HttpResponse
+from django.conf import settings
 
 # Create your views here.
 def contact(request):
@@ -26,4 +28,4 @@ def contact(request):
         print(form.errors)
     else:
         form = ContactForm()
-    return render(request, 'contact/contact.html', {'form': form, 'portfolio_view_name': "contact"})
+    return render(request, 'contact/contact.html', {'form': form, 'portfolio_view_name': 'contact', 'recaptcha_site_key':settings.RECAPTCHA_SITE_KEY})
