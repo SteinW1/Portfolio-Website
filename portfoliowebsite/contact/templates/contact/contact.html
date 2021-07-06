@@ -1,16 +1,17 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
 
-	<!-- Google's reCaptcha API -->
-	<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
-    
+	<!--###### Beginning Google's reCaptcha Info ######-->
+    <script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
     <script>
-		grecaptcha.enterprise.ready(function() {
-			grecaptcha.enterprise.execute('{{ recaptcha_site_key }}', {action: 'contact-form'}).then(function(token) {
-				document.getElementById('g-recaptcha-response').value = token;
-			});
-		});
-	</script>
+        //global grecaptcha
+        grecaptcha.ready(function() {
+            grecaptcha.execute('{{recaptcha_site_key}}', {action: "/contact/"}).then(function(token) {
+                document.getElementById('g-recaptcha-response').value = token;
+            });
+        });
+    </script>
+	<!--###### End of Google's reCaptcha Info ######-->
     
     {% if messages %}
         <ul class="alert_message {{ message.tags }}">
@@ -42,18 +43,6 @@
                 </div>
             </form>
         </div>
-        
-        <script>
-			var success = True; // for testing
-			function alertMessage(){
-				if(success == True){
-					alert("Success! Your message has been recieved.")
-				}
-				else{
-					alert("Oops! Something went wrong. Please try resubmitting the form.")
-				};
-			};
-        </script>
-        
     </div>
+    
 {% endblock content %}

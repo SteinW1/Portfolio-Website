@@ -4,31 +4,46 @@ from django.core.mail import send_mail, BadHeaderError
 from .forms import ContactForm
 from django.http import HttpResponse
 from django.conf import settings
+import requests # import requests module for easyier http for google recaptcha API
 
 # Create your views here.
 def contact(request):
     if request.method =="POST":
-        print('the request was post')
         form = ContactForm(request.POST)
+        
         if form.is_valid():
-            from_name = form.cleaned_data['from_name']
-            subject = form.cleaned_data['subject']
-            from_email = form.cleaned_data['from_email']
-            contact_message = form.cleaned_data['contact_message']
-            try:
-                send_mail(subject, contact_message, from_email, ['admin@example.com'])
-            except BadHeaderError:
-                messages.error(request, f'Invalid header found.')
+            
+            ''' reCAPTCHA validation '''
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            data = {
+                'secret': settings.RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response,
+                }
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+            reCAPTCHA_result = r.json()
+            print(reCAPTCHA_result)
+            
+            ''' if reCAPTCHA returns True. The user is not a robot.'''
+            if reCAPTCHA_result['success']:
+                from_name = form.cleaned_data['from_name']
+                subject = form.cleaned_data['subject']
+                from_email = form.cleaned_data['from_email']
+                contact_message = form.cleaned_data['contact_message']
+                try:
+                    send_mail(subject, contact_message, from_email, ['admin@example.com'])
+                except BadHeaderError:
+                    messages.error(request, f'Invalid header found.')
+                    return redirect('contact-form')
+                messages.success(request, f'Thank you, your message has been sent!')
                 return redirect('contact-form')
-            messages.success(request, f'Thank you, your message has been sent!')
-            return redirect('contact-form')
+            
+            ''' if reCAPTCHA returns False. The user is a robot. '''	
+            messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+            
         else:
             for error_message in form.messages:
                 messages.error(request, '{error_message}: {form.error_messages.[error_message]}')
         print(form.errors)
     else:
         form = ContactForm()
-    print(str(settings.RECAPTCHA_SITE_KEY))
-    a ="test"
-    print(type(a))
-    return render(request, 'contact/contact.html', {'form': form, 'portfolio_view_name': 'contact', 'recaptcha_site_key': str(settings.RECAPTCHA_SITE_KEY)})
+    return render(request, 'contact/contact.html', {'form': form, 'portfolio_view_name': 'contact', 'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY})

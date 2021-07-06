@@ -19,7 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('WILLSPORTFOLIO_SECRET_KEY')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-RECAPTCHA_SITE_KEY = os.environ.get('PORTFOLIO_RECAPTCHA_SECRET_KEY')
+RECAPTCHA_SITE_KEY = os.environ.get('PORTFOLIO_RECAPTCHA_SITE_KEY')
+RECAPTCHA_SECRET_KEY = os.environ.get('PORTFOLIO_RECAPTCHA_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
