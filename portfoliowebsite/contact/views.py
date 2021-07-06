@@ -8,9 +8,16 @@ import requests # import requests module for easyier http for google recaptcha A
 
 # Create your views here.
 def contact(request):
+    
+    context = {
+            'portfolio_view_name': 'contact',
+            'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY,
+        }
+        
     if request.method =="POST":
         form = ContactForm(request.POST)
-        
+        context['form'] = form # add for to context dictionary after it is declared
+
         if form.is_valid():
             
             ''' reCAPTCHA validation '''
@@ -29,11 +36,13 @@ def contact(request):
                 subject = form.cleaned_data['subject']
                 from_email = form.cleaned_data['from_email']
                 contact_message = form.cleaned_data['contact_message']
+                
                 try:
-                    send_mail(subject, contact_message, from_email, ['admin@example.com'])
+                    send_mail(subject, contact_message, from_email, ['admin@williamstein.com'])
                 except BadHeaderError:
                     messages.error(request, f'Invalid header found.')
                     return redirect('contact-form')
+                
                 messages.success(request, f'Thank you, your message has been sent!')
                 return redirect('contact-form')
             
@@ -41,9 +50,10 @@ def contact(request):
             messages.error(request, 'Invalid reCAPTCHA. Please try again.')
             
         else:
-            for error_message in form.messages:
-                messages.error(request, '{error_message}: {form.error_messages.[error_message]}')
-        print(form.errors)
+            for error_message in form.errors:
+                messages.error(request, f'{form.errors[error_message]}')
+                
     else:
         form = ContactForm()
-    return render(request, 'contact/contact.html', {'form': form, 'portfolio_view_name': 'contact', 'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY})
+        context['form'] = form # add for to context dictionary after it is declared
+    return render(request, 'contact/contact.html', context)
