@@ -1,7 +1,10 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
+{% load static %}
 
     <script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
+    <script src="{% static 'contact/contact.js' %}"></script>
+    <script>recaptchatoken('{{ recaptcha_site_key }}')</script>
     
     {% if messages %}
         <ul class="alert_message {{ message.tags }}">
@@ -39,18 +42,5 @@
             </form>
         </div>
     </div>
-    
-    <script>
-        //google recaptcha info
-        grecaptcha.ready(function() {
-            grecaptcha.execute('{{recaptcha_site_key}}', {action: "/contact/"}).then(function(token) {
-                document.getElementById('g-recaptcha-response').value = token;
-            });
-        });
 
-        function alertMessage(text) {
-            alert(text);
-            };
-    </script>
-    
 {% endblock content %}
