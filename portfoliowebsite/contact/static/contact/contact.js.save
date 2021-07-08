@@ -1,0 +1,9 @@
+//google recaptcha info
+grecaptcha.ready(function() {
+grecaptcha.execute('{{recaptcha_site_key}}', {action: "/contact/"}).then(function(token) {                document.getElementById('g-recaptcha-response').value = token;
+            });
+        });
+
+        function alertMessage(text) {
+            alert(text);
+            };

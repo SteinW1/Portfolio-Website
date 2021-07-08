@@ -16,22 +16,13 @@ def contact(request):
         
     if request.method =="POST":
         form = ContactForm(request.POST)
-        context['form'] = form # add for to context dictionary after it is declared
+        context['form'] = form # add form to context dictionary after it is declared
 
         if form.is_valid():
             
-            ''' reCAPTCHA validation '''
-            recaptcha_response = request.POST.get('g-recaptcha-response')
-            data = {
-                'secret': settings.RECAPTCHA_SECRET_KEY,
-                'response': recaptcha_response,
-                }
-            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-            reCAPTCHA_result = r.json()
-            print(reCAPTCHA_result)
+            reCAPTCHA_validation_result = validateRecaptcha(request)
             
-            ''' if reCAPTCHA returns True. The user is not a robot.'''
-            if reCAPTCHA_result['success']:
+            if reCAPTCHA_validation_result['success']:
                 from_name = form.cleaned_data['from_name']
                 subject = form.cleaned_data['subject']
                 from_email = form.cleaned_data['from_email']
@@ -45,9 +36,8 @@ def contact(request):
                 
                 messages.success(request, f'Thank you, your message has been sent!')
                 return redirect('contact-form')
-            
-            ''' if reCAPTCHA returns False. The user is a robot. '''	
-            messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+            else:
+                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
             
         else:
             for error_message in form.errors:
@@ -55,5 +45,26 @@ def contact(request):
                 
     else:
         form = ContactForm()
-        context['form'] = form # add for to context dictionary after it is declared
+        context['form'] = form # add form to context dictionary after it is declared
     return render(request, 'contact/contact.html', context)
+    
+def validateRecaptcha(request):
+    ''' 
+    Function for validating a user with google's reCAPTCHA.
+    
+    Args:
+        request: http request for the view
+    Returns:
+        validated recaptcha result in format {'success': bool, 'challenge_ts': str, 'hostname': str, 'score': int 'action': str}
+    '''
+    recaptcha_response = request.POST.get('g-recaptcha-response')
+    
+    data = {
+        'secret': settings.RECAPTCHA_SECRET_KEY,
+        'response': recaptcha_response,
+        }
+    
+    r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+    reCAPTCHA_result = r.json()
+    
+    return reCAPTCHA_result

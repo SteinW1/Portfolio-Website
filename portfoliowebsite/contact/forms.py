@@ -10,7 +10,6 @@ class ContactForm(forms.Form):
     from_email = forms.EmailField(
         required=True,
         label='Your Email:', 
-        error_messages = {'Invalid Email': 'Please enter a valid email.'},
         widget=forms.TextInput(
             attrs={'class':'form-textfield'})
         )

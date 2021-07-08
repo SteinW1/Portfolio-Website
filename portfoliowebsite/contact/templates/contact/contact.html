@@ -1,11 +1,9 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
 {% load static %}
-
     <script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
     <script src="{% static 'contact/contact.js' %}"></script>
     <script>recaptchatoken('{{ recaptcha_site_key }}')</script>
-    
     {% if messages %}
         <ul class="alert_message {{ message.tags }}">
             {% for message in messages %}
@@ -17,7 +15,6 @@
             {% endfor %}
         </ul>
     {% endif %}
-   
     <div class="content">
         <h1>Contact Me</h1>
         <p>You can send a message to my email by filling out the form below.</p>
@@ -42,5 +39,4 @@
             </form>
         </div>
     </div>
-
 {% endblock content %}
