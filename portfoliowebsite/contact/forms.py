@@ -3,22 +3,25 @@ from django import forms
 class ContactForm(forms.Form):
     from_name = forms.CharField(
         required=True,
-        label='Your Name:',
+        label='Name:',
         widget=forms.TextInput(
             attrs={'class':'form-textfield'}
         ))
+        
     from_email = forms.EmailField(
         required=True,
-        label='Your Email:', 
+        label='Email:', 
         widget=forms.TextInput(
             attrs={'class':'form-textfield'})
         )
+        
     subject = forms.CharField(
         required=True,
         label='Subject:',
         widget=forms.TextInput(
             attrs={'class':'form-textfield'})
         )
+        
     contact_message = forms.CharField(
         required=True,
         label='Message:',

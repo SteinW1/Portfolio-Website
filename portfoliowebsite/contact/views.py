@@ -1,16 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
-from .forms import ContactForm
 from django.http import HttpResponse
 from django.conf import settings
+from .forms import ContactForm
 import requests # import requests module for easyier http for google recaptcha API
 
 # Create your views here.
 def contact(request):
     
     context = {
-            'portfolio_view_name': 'contact',
             'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY,
         }
         
@@ -38,7 +37,7 @@ def contact(request):
                 return redirect('contact-form')
             else:
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
-            
+                
         else:
             for error_message in form.errors:
                 messages.error(request, f'{form.errors[error_message]}')
@@ -48,12 +47,13 @@ def contact(request):
         context['form'] = form # add form to context dictionary after it is declared
     return render(request, 'contact/contact.html', context)
     
+
 def validateRecaptcha(request):
     ''' 
     Function for validating a user with google's reCAPTCHA.
     
     Args:
-        request: http request for the view
+        request: http request
     Returns:
         validated recaptcha result in format {'success': bool, 'challenge_ts': str, 'hostname': str, 'score': int 'action': str}
     '''

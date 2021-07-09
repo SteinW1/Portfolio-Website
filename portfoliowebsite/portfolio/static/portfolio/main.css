@@ -9,6 +9,10 @@
     --errorText: #8b0000;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -104,6 +108,10 @@ button:hover {
     padding: 20px;
     background-color: var(--primaryColor);
     border-radius: 5px;
+}
+
+.form-object {
+    
 }
 
 .form-textfield {

@@ -26,9 +26,8 @@ RECAPTCHA_SECRET_KEY = os.environ.get('PORTFOLIO_RECAPTCHA_SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
+    '127.0.0.1', # FOR TESTING ONLY
 ]
-WEBSITE_IP = '127.0.0.1' # used for development only
 
 # Application definition
 

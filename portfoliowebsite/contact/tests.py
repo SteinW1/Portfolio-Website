@@ -13,7 +13,7 @@ class ContactFormTests(TestCase):
         pass
         
     def test_contact_form_invalid_email(self):
-        '''Test that the form won't accept invalid email'''
+        '''Test to make sure the form won't accept invalid email'''
         form = ContactForm(data={'from_name': 'testname',
                                     'from_email': 'testthisform&&gmail.com',
                                     'subject': 'test subject',
