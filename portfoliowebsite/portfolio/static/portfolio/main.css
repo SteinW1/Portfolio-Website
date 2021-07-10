@@ -31,11 +31,11 @@ button {
     border: none;
 }
 
-button:hover {
+button.hover {
     background-color: var(--secondaryColor);
 }
 
-.navigation-bar {
+.nav-bar {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -45,7 +45,7 @@ button:hover {
     width: 100%;
 }
 
-.nav-item {
+.nav-bar a {
     display: block;
     color: var(--white);
     text-align: center;
@@ -53,20 +53,40 @@ button:hover {
     float: right;
 }
 
-.nav-item:hover {
+.nav-bar a:hover{
     background-color: var(--white);
     color: var(--primaryColor);
     text-decoration: none;
     transition-duration: 0.4s;
 }
 
-.active-nav-item {
+.nav-bar a.active {
     background-color: var(--white);
     color: var(--primaryColor);
 }
 
+.content-column-container {
+    display: flex;
+}
+.content-column {
+    padding: 0.625em;
+}
+
+.side-content-column {
+    flex: 1;
+}
+.middle-content-column {
+    flex: 2;
+}
+
+/* Make columns stack into rows when on mobile device */
+@media (max-width: 800px) {
+  .content-column-container {
+    flex-direction: column;
+  }
+}
+
 .content {
-    margin: 20px 200px;
 }
 
 .projects-grid-container {
@@ -111,7 +131,6 @@ button:hover {
 }
 
 .form-object {
-    
 }
 
 .form-textfield {
@@ -146,10 +165,4 @@ button:hover {
 .error {
     background-color: var(--errorBG);
     color: var(--errorText);
-}
-
-.closebtn {
-    cursor: pointer;
-    float: right;
-    margin-left: 15px;
 }
