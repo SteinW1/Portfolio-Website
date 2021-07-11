@@ -16,10 +16,11 @@
     </head>
     <body>
         <ul class="nav-bar" id="navbar">
-            <a class="{% if request.get_full_path == '/contact/' %}active{% endif %}" href="{% url 'contact-form' %}">Contact</a>
-            <a class="{% if request.get_full_path == '/resume/' %}active{% endif %}" href="{% url 'portfolio-resume' %}">Resume</a>
-            <a class="{% if request.get_full_path == '/projects/' %}active{% endif %}" href="{% url 'portfolio-projects' %}">Projects</a>
             <a class="{% if request.get_full_path == '/home/' %}active{% endif %}" href="{% url 'portfolio-home' %}">Home</a>
+            <a class="{% if request.get_full_path == '/projects/' %}active{% endif %}" href="{% url 'portfolio-projects' %}">Projects</a>
+            <a class="{% if request.get_full_path == '/resume/' %}active{% endif %}" href="{% url 'portfolio-resume' %}">Resume</a>
+            <a class="{% if request.get_full_path == '/contact/' %}active{% endif %}" href="{% url 'contact-form' %}">Contact</a>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
         </ul>
         <header></header>
         <main>
@@ -36,5 +37,14 @@
         <div class="footer-container">
         </div>
     </footer>
-    <script>
+    <script>      
+        function responsiveNavbar() {
+            var x = document.getElementById("navbar");
+            if (x.className === "nav-bar") {
+                x.className += " responsive";
+            } else {
+                x.className = "nav-bar";
+            }
+        } 
+    </script>
 </html>
