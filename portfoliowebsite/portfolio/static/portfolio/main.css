@@ -58,7 +58,7 @@ button.hover {
     background-color: var(--white);
     color: var(--primaryColor);
     text-decoration: none;
-    transition-duration: 0.4s;
+    transition-duration: 1s;
 }
 
 .nav-bar a.active {
@@ -66,7 +66,7 @@ button.hover {
     color: var(--primaryColor);
 }
 
-.topnav .icon {
+.nav-bar .icon {
   display: none;
 }
 

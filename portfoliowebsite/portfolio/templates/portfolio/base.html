@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'portfolio/main.css' %}">
         
         <script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
+        <script src="{% static 'portfolio/main.js' %}"></script>
         
         {% if title %}
             <title>{{ title }}</title>
@@ -16,7 +17,7 @@
     </head>
     <body>
         <ul class="nav-bar" id="navbar">
-            <a class="{% if request.get_full_path == '/home/' %}active{% endif %}" href="{% url 'portfolio-home' %}">Home</a>
+            <a class="{% if request.get_full_path == '/' %}active{% endif %}" href="{% url 'portfolio-home' %}">Home</a>
             <a class="{% if request.get_full_path == '/projects/' %}active{% endif %}" href="{% url 'portfolio-projects' %}">Projects</a>
             <a class="{% if request.get_full_path == '/resume/' %}active{% endif %}" href="{% url 'portfolio-resume' %}">Resume</a>
             <a class="{% if request.get_full_path == '/contact/' %}active{% endif %}" href="{% url 'contact-form' %}">Contact</a>
@@ -37,14 +38,4 @@
         <div class="footer-container">
         </div>
     </footer>
-    <script>      
-        function responsiveNavbar() {
-            var x = document.getElementById("navbar");
-            if (x.className === "nav-bar") {
-                x.className += " responsive";
-            } else {
-                x.className = "nav-bar";
-            }
-        } 
-    </script>
 </html>
