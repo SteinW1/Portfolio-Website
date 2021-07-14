@@ -29,13 +29,31 @@
                 <!-- reCAPTCHA input -->
 				<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 
-                <div class="form-input-container">
-                    {% for i in form %}
-                        <div class="form-input-group form-object">
-                            <p class="contact-form-input-label">{{ i.label }}</p>
-                            {{ i }}
-                        </div>
-                    {% endfor %}
+                <div class="contact-form-input-container">
+                    <div class="contact-form-grid-container">
+                    <div class="contact-form-field contact-form-grid-item">
+                        <p class="contact-form-input-label"> {{ form.from_name.label }}</p>
+                        {{ form.from_name }}
+                        {{ form.from_name.errors }}
+                    </div>
+                    <div class="contact-form-field contact-form-grid-item">
+                        <p class="contact-form-input-label">{{ form.from_email.label }}</p>
+                        {{ form.from_email }}
+                        {{ form.from_email.errors }}
+                    </div>
+                    </div>
+                    <div class="contact-form-field">
+                        <p class="contact-form-input-label">{{ form.subject.label }}</p>
+                        {{ form.subject }}
+                        {{ form.subject.errors }}
+                    </div>
+                    
+                    <div class="contact-form-field">
+                        <p class="contact-form-input-label">{{ form.message.label }}</p>
+                        {{ form.message }}
+                        {{ form.subject.errors }}
+                    </div>
+                    
                     <div class="contact-form-action-buttons">
                         <button type="submit" class="contact-form-submit-button">Send</button>
                     </div>
@@ -44,5 +62,3 @@
         </div>
     </div>
 {% endblock content %}
-
-<a target="_blank" href="https://icons8.com/icon/103258/jellyfish">Jellyfish</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

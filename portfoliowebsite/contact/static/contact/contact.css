@@ -2,13 +2,27 @@
     padding: 10px;
 }
 
-.form-input-container {
+.contact-form-input-container {
     padding: 20px;
     background-color: var(--primaryColor);
     border-radius: 5px;
 }
 
-.form-object {
+.contact-form-grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+}
+
+.contact-form-grid-item {
+    display: inline-grid;
+}
+
+@media screen and (max-width: 600px) {
+    .contact-form-grid-container {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .contact-form-textfield {
@@ -16,6 +30,7 @@
     border:2px solid var(--white);
     outline: none;
     resize: none;
+    width: 100%;
 }
 
 .contact-form-textfield:focus {
@@ -30,9 +45,6 @@
 
 .contact-form-action-buttons {
     padding: 10px 10px 0px 0px;
-}
-
-.contact-form-submit-button {
 }
 
 .contact-form-alert_message {

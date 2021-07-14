@@ -6,7 +6,6 @@ from django.conf import settings
 from .forms import ContactForm
 import requests # import requests module for easyier http for google recaptcha API
 
-# Create your views here.
 def contact(request):
     
     context = {

@@ -5,26 +5,30 @@ class ContactForm(forms.Form):
         required=True,
         label='Name:',
         widget=forms.TextInput(
-            attrs={'class':'contact-form-textfield'}
+            attrs={'class':'contact-form-textfield', 
+            'placeholder':'Enter your name...'},
         ))
         
     from_email = forms.EmailField(
         required=True,
         label='Email:', 
         widget=forms.TextInput(
-            attrs={'class':'contact-form-textfield'})
-        )
+            attrs={'class':'contact-form-textfield',
+            'placeholder':'Enter your email...'},
+        ))
         
     subject = forms.CharField(
         required=True,
         label='Subject:',
         widget=forms.TextInput(
-            attrs={'class':'contact-form-textfield'})
-        )
+            attrs={'class':'contact-form-textfield',
+            'placeholder':'Message subject...'},
+        ))
         
-    contact_message = forms.CharField(
+    message = forms.CharField(
         required=True,
         label='Message:',
         widget=forms.Textarea(
-            attrs={'class':'contact-form-textfield'})
-        )
+            attrs={'class':'contact-form-textfield',
+            'placeholder':'Enter your message...'},
+        ))
