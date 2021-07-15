@@ -48,9 +48,8 @@
 }
 
 .contact-form-alert_message {
-    width: auto;
-    margin: 0;
-    padding: 15px;
+    width: 100%;
+    padding: 0;
     font-weight: bold;
 }
 
@@ -60,7 +59,7 @@
 }
 
 .error {
-    background-color: var(--errorBG);
+    /*background-color: var(--errorBG);*/
     color: var(--errorText);
 }
 
