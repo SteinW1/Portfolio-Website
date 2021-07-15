@@ -13,16 +13,16 @@
         </div>
         
         {% if messages %}
-        <ul class="contact-form-alert_message {{ message.tags }}">
-            {% for message in messages %}
-                {% if message.tags == 'success' %}
-                    <script>alertMessage("{{ message }}");</script>
-                {% elif message.tags == "error" %}
-                    <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>- {{ message|striptags }}</p>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    {% endif %}
+            <ul class="contact-form-alert_message {{ message.tags }}">
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                        <script>alertMessage("{{ message }}");</script>
+                    {% elif message.tags == "error" %}
+                        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>- {{ message|striptags }}</p>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
     
         <div class="form-container">
             <form method="post">
@@ -53,7 +53,7 @@
                     </div>
                     
                     <div class="contact-form-action-buttons">
-                        <button type="submit" class="contact-form-submit-button">Send</button>
+                        <button type="submit" class="contact-form-button">Send</button>
                     </div>
                 </div>
             </form>

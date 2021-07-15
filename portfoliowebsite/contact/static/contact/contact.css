@@ -47,6 +47,11 @@
     padding: 10px 10px 0px 0px;
 }
 
+.contact-form-button:hover {
+    background-color: var(--secondaryColor);
+    cursor: pointer;
+}
+
 .contact-form-alert_message {
     width: 100%;
     padding: 0;
